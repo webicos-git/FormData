@@ -1,3 +1,70 @@
-body {
-    background-color: lightblue;
+*, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-wrapper {
+  width: 100%;
+  height: 100vh;
+  background-image: url("bg-image.jpg");
+  background-color: #eee;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-wrapper {
+  width: 60%;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: .5rem;
+}
+
+.server {
+  width: 50%;
+}
+
+.payment {
+  width: 50%;
+}
+
+.profit {
+  width: 50%;
+}
+
+.expiry-date {
+  width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .form-wrapper {
+    width: 95%;
   }
+
+  .server {
+    width: 100%;
+  }
+
+  .profit {
+    width: 100%;
+  }
+
+  .expiry-date {
+    width: 100%;
+  }
+
+  .payment {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .profit {
+    margin-top: 1rem;
+  }
+
+
+}
