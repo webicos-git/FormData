@@ -40,6 +40,10 @@
   width: 50%;
 }
 
+.submit-btn {
+  width: 200px;
+}
+
 @media screen and (max-width: 768px) {
   .form-wrapper {
     width: 95%;
