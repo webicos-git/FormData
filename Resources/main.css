@@ -22,6 +22,7 @@
   padding: 1rem;
   background-color: #f9f9f9;
   border-radius: .5rem;
+  opacity: 90%;
 }
 
 .server {
@@ -42,6 +43,13 @@
 
 .submit-btn {
   width: 200px;
+}
+
+.doc_icon {
+  width: 50px;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -69,6 +77,4 @@
   .profit {
     margin-top: 1rem;
   }
-
-
 }
