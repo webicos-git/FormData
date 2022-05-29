@@ -45,16 +45,18 @@
       </tr>
     </thead>
     <tbody>
+        {% for user in userdata %}
       <tr>
-        <td>1</td>
-        <td>altu</td>
-        <td>hasan</td>
-        <td>International</td>
-        <td>Yes</td>
-        <td>Online</td>
-        <td>500</td>
-        <td>2022-12-10</td>
+        <td>{{forloop.counter}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.clientname}}</td>
+        <td>{{user.server}}</td>
+        <td>{{user.paymentRecieved}}</td>
+        <td>{{user.paymentType}}</td>
+        <td>{{user.profit}}</td>
+        <td>{{user.date}}</td>
       </tr>
+      {% endfor %}
     </tbody>
   </table>
 
