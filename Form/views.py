@@ -13,7 +13,7 @@ def index(request):
         if "AsiaServer" in data:
             server="Asia Server"
         
-        paymentRecieved=""
+        paymentRecieved="Not Recieved"
         paymentType=""
         if "paymentRecieved" in data:
             paymentRecieved="Payment Recieved"
@@ -37,6 +37,6 @@ def index(request):
     return render(request,'index.html')
 
 def search(request):
-    userdata =UserData.objects.filter(username="admin1")
+    userdata =UserData.objects.all()
     print(userdata)
-    return render(request,'search.html')    
+    return render(request,'search.html',{'userdata':userdata})    
