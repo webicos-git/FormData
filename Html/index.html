@@ -35,13 +35,13 @@
           <div class="server">
             <p class="text-secondary mb-1">Select Server</p>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="InternationalServer" id="flexRadioDefault1" required>
+              <input class="form-check-input" type="radio" name="server" id="flexRadioDefault1" required>
               <label class="form-check-label" for="flexRadioDefault1">
                 International Server
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="AsiaServer" id="flexRadioDefault2" required>
+              <input class="form-check-input" type="radio" name="server" id="flexRadioDefault2" required>
               <label class="form-check-label" for="flexRadioDefault2">
                 Asia Server
               </label>
@@ -57,7 +57,7 @@
             <div class="form-check">
               <input class="form-check-input" type="radio" name="Transaction" id="sell" required>
               <label class="form-check-label" for="sell">
-                Sell
+                SELL
               </label>
             </div>
           </div>
@@ -70,25 +70,31 @@
             </div>
 
             <div class="form-check mt-2">
-              <input class="form-check-input" type="radio" name="OnlinePayment" id="flexRadioDefault3" required>
+              <input class="form-check-input" type="radio" name="paymentType" id="flexRadioDefault3" required>
               <label class="form-check-label" for="flexRadioDefault3">
                 Online Payment
               </label>
             </div>
             <div class="form-check">
-            <input class="form-check-input" type="radio" name="OfflinePayment" id="flexRadioDefault4">
+              <input class="form-check-input" type="radio" name="paymentType" id="flexRadioDefault4">
               <label class="form-check-label" for="flexRadioDefault4">
                 Offline Payment
               </label>
+            </div>
+
+            <div class="sell-amount mt-2">
+              <div class="input-group mb-md-3">
+                <input type="number" class="form-control" name="sellAmount" placeholder="Enter Sell amount" id="sell-amount">
+              </div>
             </div>
           </div>
         </div>
 
         <div class="d-flex gap-3 flex-md-row flex-column mt-md-3">
           <div class="profit">
-            <label for="profit" class="mb-2 text-secondary">Enter Profit</label>
+            <label for="profit" class="mb-2 text-secondary">Enter Buy amount</label>
             <div class="input-group mb-md-3">
-              <input type="number" class="form-control" name="profit" placeholder="Profit" id="profit">
+              <input type="number" class="form-control" name="buyAmount" placeholder="Buy amount" id="profit">
             </div>
           </div>
 
