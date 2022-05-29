@@ -7,7 +7,10 @@ class UserData(models.Model):
     server=models.CharField(max_length =100)
     paymentRecieved=models.CharField(max_length =100)
     paymentType=models.CharField(max_length =100)
-    profit=models.CharField(max_length =100)
+    transaction=models.CharField(max_length =100,default='')
+    sellAmount=models.CharField(max_length =100,default='')
+    buyAmount=models.CharField(max_length =100,default='')
+    # profit=models.CharField(max_length =100)
     date=models.CharField(max_length =100)
 
     def __str__(self):

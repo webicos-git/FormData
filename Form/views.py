@@ -10,27 +10,29 @@ def index(request):
     if request.method == 'POST':
         print(request.POST)
         data = request.POST
-        server = "Not Selected"
-        if "InternationalServer" in data:
-            server = "International Server"
-        if "AsiaServer" in data:
-            server = "Asia Server"
-
+        server = data['server']
         paymentRecieved = "Not Recieved"
-        paymentType = "Not Recieved"
+        paymentType =""
         if "paymentRecieved" in data:
             paymentRecieved = "Payment Recieved"
-        if "OnlinePayment" in data:
-            paymentType = "Online Payment"
-        if "OfflinePayment" in data:
-            paymentType = "Offline Payment"
+            paymentType =data['paymentmode']
+
+       
         date = data['date']
         username = data['username']
         clientname = data['clientname']
-        profit = data['profit']
         date = datetime.strptime(date, "%Y-%m-%d").strftime('%d-%m-%Y')
-        userdata = UserData(username=username, clientname=clientname, profit=profit, date=date,
-                            paymentType=paymentType, paymentRecieved=paymentRecieved, server=server)
+        transaction = data['buyorsell']
+        buy=""
+        sell=""
+        if "buyAmount" in data and data['buyAmount'] != '':
+            buy=data['buyAmount']
+            buy=float(buy)
+        if "sellAmount" in data and data['sellAmount'] != '':
+            sell=data['sellAmount']
+            sell=float(sell)
+        userdata = UserData(username=username, clientname=clientname, date=date,
+                            paymentType=paymentType, paymentRecieved=paymentRecieved, server=server,transaction=transaction,buyAmount=buy,sellAmount=sell)
 
         userdata.save()
         print("model saved")
