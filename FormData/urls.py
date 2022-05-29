@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
 from Form import views
+from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index),
-    path('search/',views.search)
-]
+    path('', views.index),
+    path('search/', views.search),
+    path('getPdf/', views.getPdf),
+    path('createPdf/', views.createPdf),
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
