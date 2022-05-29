@@ -14,14 +14,15 @@
 
     <div class="form-wrapper">
       <h4 class="mb-3">Enter Details:</h4>
-      <form>
+      <form method="POST"> 
+        {% csrf_token %}  
         <div class="d-flex gap-3 flex-md-row flex-column">
           <div class="input-group mb-md-3">
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+            <input type="text" class="form-control" placeholder="Username" aria-label="Username" name="username">
           </div>
 
           <div class="input-group mb-md-3">
-            <input type="text" class="form-control" placeholder="Client Name" aria-label="Client Name">
+            <input type="text" class="form-control" placeholder="Client Name" aria-label="Client Name" name="clientname">
           </div>
         </div>
 
@@ -29,13 +30,13 @@
 
           <div class="server">
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <input class="form-check-input" type="radio" name="InternationalServer" id="flexRadioDefault1">
               <label class="form-check-label" for="flexRadioDefault1">
                 International Server
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+              <input class="form-check-input" type="radio" name="AsiaServer" id="flexRadioDefault2">
               <label class="form-check-label" for="flexRadioDefault2">
                 Asia Server
               </label>
@@ -45,17 +46,17 @@
           <div class="payment">
             <div class="form-check form-switch">
               <label class="form-check-label" for="flexSwitchCheckChecked">Payment recieved</label>
-              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
+              <input class="form-check-input" type="checkbox" name="paymentRecieved" role="switch" id="flexSwitchCheckChecked" >
             </div>
 
             <div class="form-check mt-2">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+              <input class="form-check-input" type="radio" name="OnlinePayment" id="flexRadioDefault3">
               <label class="form-check-label" for="flexRadioDefault3">
                 Online Payment
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+              <input class="form-check-input" type="radio" name="OfflinePayment" id="flexRadioDefault4">
               <label class="form-check-label" for="flexRadioDefault4">
                 Offline Payment
               </label>
@@ -67,14 +68,14 @@
           <div class="profit">
             <label for="expiry" class="mb-2 text-secondary">Enter Profit</label>
             <div class="input-group mb-md-3">
-              <input type="number" class="form-control" placeholder="Profit">
+              <input type="number" class="form-control" name="profit" placeholder="Profit">
             </div>
           </div>
 
           <div class="expiry-date">
             <label for="expiry" class="mb-2 text-secondary">Expiry Date</label>
             <div class="input-group mb-3">
-              <input type="date" class="form-control" placeholder="Profit" id="expiry">
+              <input type="date" class="form-control" name="date" placeholder="Profit" id="expiry">
             </div>
           </div>
         </div>
