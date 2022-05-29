@@ -43,6 +43,7 @@
         <th>Payment Type</th>
         <th>Profit (QR)</th>
         <th>Expiry</th>
+        <th>Options</th>
       </tr>
       </thead>
       <tbody>
@@ -56,6 +57,7 @@
         <td>{{user.paymentType}}</td>
         <td>{{user.profit}}</td>
         <td>{{user.date}}</td>
+        <td><button type="button" class="btn btn-danger">Delete</button></td>
       </tr>
       {% endfor %}
       </tbody>
