@@ -10,7 +10,8 @@
   <link rel="stylesheet" type="text/css" href="{% static 'search.css' %}"/>
 </head>
 <body class="container">
-  <h1 class="display-4 mt-4">Search records</h1>
+  <a class="btn btn-secondary mt-4" href="/"> < Go Back</a>
+  <h1 class="display-4 mt-2">Search records</h1>
 
   <div class="filter-search-section d-flex gap-3 mt-3 flex-md-row flex-column">
     <div class="search-text">
@@ -41,7 +42,7 @@
         <th>Server</th>
         <th>Payment Recieved</th>
         <th>Payment Type</th>
-        <th>Profit (QR)</th>
+        <th>Phone No.</th>
         <th>Expiry</th>
         <th>Options</th>
       </tr>
@@ -55,7 +56,7 @@
         <td>{{user.server}}</td>
         <td>{{user.paymentRecieved}}</td>
         <td>{{user.paymentType}}</td>
-        <td>{{user.profit}}</td>
+        <td>12332</td>
         <td>{{user.date}}</td>
         <td><button type="button" class="btn btn-danger">Delete</button></td>
       </tr>

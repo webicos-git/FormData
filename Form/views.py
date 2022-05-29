@@ -39,10 +39,9 @@ def index(request):
 
 
 def search(request):
-    userdata = UserData.objects.all()
-    print(userdata)
-    return render(request, 'search.html', {'userdata': userdata})
-
+    #userdata = UserData.objects.all()
+    #print(userdata)
+    return render(request, 'search.html')
 
 def getPdf(request):
     params = {'username': 'altamash'}
