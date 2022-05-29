@@ -3,6 +3,7 @@ from django.http import HttpResponse, request
 # Create your views here.``
 from .models import UserData
 from datetime import datetime
+from .helpers import save_pdf
 
 
 def index(request):
@@ -41,3 +42,12 @@ def search(request):
     userdata = UserData.objects.all()
     print(userdata)
     return render(request, 'search.html', {'userdata': userdata})
+
+
+def getPdf(request):
+    params = {'username': 'altamash'}
+    filename = save_pdf(params)
+    return render(request, 'pdf.html', {'path': filename})
+
+def createPdf(request):
+    return render(request, 'pdf.html')
