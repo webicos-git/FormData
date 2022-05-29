@@ -1,0 +1,27 @@
+.search-text {
+  width: 70%;
+}
+
+.date-picker {
+  width: 30%;
+}
+
+th, td {
+  border: 1px solid #b9b9b9;
+}
+
+table {
+  overflow-x: scroll;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .search-text {
+    width: 100%;
+  }
+
+  .date-picker {
+    width: 100%;
+  }
+}
