@@ -14,7 +14,13 @@ table {
   overflow-x: scroll;
 }
 
+.table-wrapper {
+ overflow-x: scroll;
+}
 
+.table-wrapper::-webkit-scrollbar {
+  display: none;
+}
 
 @media screen and (max-width: 768px) {
   .search-text {
