@@ -24,11 +24,16 @@
           <div class="input-group mb-md-3">
             <input type="text" class="form-control" placeholder="Client Name" aria-label="Client Name" name="clientname" required>
           </div>
+
+          <div class="input-group mb-md-3">
+            <input type="number" class="form-control" placeholder="Phone Number" aria-label="Client Name" name="phoneNumber" required>
+          </div>
         </div>
 
         <div class="d-flex flex-md-row flex-column justify-content-start mt-3">
 
           <div class="server">
+            <p class="text-secondary mb-1">Select Server</p>
             <div class="form-check">
               <input class="form-check-input" type="radio" name="InternationalServer" id="flexRadioDefault1" required>
               <label class="form-check-label" for="flexRadioDefault1">
@@ -41,9 +46,24 @@
                 Asia Server
               </label>
             </div>
+
+            <p class="text-secondary mb-1 mt-3">Select Transaction</p>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="Transaction" id="buy" required>
+              <label class="form-check-label" for="buy">
+                BUY
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="Transaction" id="sell" required>
+              <label class="form-check-label" for="sell">
+                Sell
+              </label>
+            </div>
           </div>
 
           <div class="payment">
+            <p class="text-secondary mb-1">Select Payment Mode</p>
             <div class="form-check form-switch">
               <label class="form-check-label" for="flexSwitchCheckChecked">Payment recieved</label>
               <input class="form-check-input" type="checkbox" name="paymentRecieved" role="switch" id="flexSwitchCheckChecked" required>
