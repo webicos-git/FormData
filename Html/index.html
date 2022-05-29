@@ -30,36 +30,20 @@
           </div>
         </div>
 
-        <div class="d-flex flex-md-row flex-column justify-content-start mt-3">
+        <div class="d-flex flex-md-row flex-column justify-content-start mt-3 gap-3">
 
           <div class="server">
             <p class="text-secondary mb-1">Select Server</p>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="server" id="flexRadioDefault1" required>
-              <label class="form-check-label" for="flexRadioDefault1">
-                International Server
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="server" id="flexRadioDefault2" required>
-              <label class="form-check-label" for="flexRadioDefault2">
-                Asia Server
-              </label>
-            </div>
+            <select class="form-select">
+              <option value="International Server" selected>International Server</option>
+              <option value="Asia Server">Asia Server</option>
+            </select>
 
             <p class="text-secondary mb-1 mt-3">Select Transaction</p>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="Transaction" id="buy" required>
-              <label class="form-check-label" for="buy">
-                BUY
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="Transaction" id="sell" required>
-              <label class="form-check-label" for="sell">
-                SELL
-              </label>
-            </div>
+            <select class="form-select">
+              <option value="buy" selected>BUY</option>
+              <option value="sell">SELL</option>
+            </select>
           </div>
 
           <div class="payment">
@@ -69,18 +53,10 @@
               <input class="form-check-input" type="checkbox" name="paymentRecieved" role="switch" id="flexSwitchCheckChecked" required>
             </div>
 
-            <div class="form-check mt-2">
-              <input class="form-check-input" type="radio" name="paymentType" id="flexRadioDefault3" required>
-              <label class="form-check-label" for="flexRadioDefault3">
-                Online Payment
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="paymentType" id="flexRadioDefault4">
-              <label class="form-check-label" for="flexRadioDefault4">
-                Offline Payment
-              </label>
-            </div>
+            <select class="form-select mt-1">
+              <option value="Online Payment" selected>Online Payment</option>
+              <option value="Offline Payment">Offline Payment</option>
+            </select>
 
             <div class="sell-amount mt-2">
               <div class="input-group mb-md-3">
