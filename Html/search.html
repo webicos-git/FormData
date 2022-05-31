@@ -56,10 +56,14 @@
         <td>{{user.server}}</td>
         <td>{{user.paymentRecieved}}</td>
         <td>{{user.paymentType}}</td>
-        <td>12332</td>
+        <td>{{user.phone}}</td>
         <td>{{user.date}}</td>
-        <td><button type="button" class="btn btn-danger">Delete</button></td>
-      </tr>
+        <td><a href="{% url 'deleteUserData' user.id %}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+
+        <!-- <td>{{user.buyAmount}}</td>
+        <td>{{user.sellAmount}}</td> -->
+    </tr>
+
       {% endfor %}
       </tbody>
     </table>
