@@ -24,4 +24,5 @@ urlpatterns = [
     path('search/', views.search),
     path('getPdf/', views.getPdf),
     path('createPdf/', views.createPdf),
+    path('search/delete/<str:id>/', views.deleteUserData,name="deleteUserData"),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
