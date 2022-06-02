@@ -2,87 +2,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Pdf</title>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
-    <!-- <link rel="stylesheet" type="text/css" href="{% static 'pdf.css' %}"/> -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Pdf</title>
+
+  <style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+      overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+      font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}
+    .tg .tg-y698{background-color:#efefef;border-color:inherit;text-align:left;vertical-align:top}
+    .tg .tg-0lax{text-align:left;vertical-align:top}
+    .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+    .tg .tg-73oq{border-color:#000000;text-align:left;vertical-align:top}
+  </style>
 </head>
 <body class="container">
 <a href="{{path}}" class="btn btn-success mt-5" download>
-    <!-- <img src="{% static 'pdf.png' %}" width="25px" alt="pdf download"> -->
-    Download
+  <!-- <img src="{% static 'pdf.png' %}" width="25px" alt="pdf download"> -->
+  Download
 </a>
-<div class="table-wrapper">
-    <table class="table table-striped mt-3" id="example-table">
-        <thead>
-        <tr>
-            <th>Sr. No</th>
-            <th>Username</th>
-            <th>Client Name</th>
-            <th>Server</th>
-            <th>Payment Recieved</th>
-            <th>Payment Type</th>
-            <th>Phone No.</th>
-            <th>Expiry</th>
-            <th>Buy</th>
-            <th>Sell</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for user in userdata %}
-        <tr>
-            <td>{{forloop.counter}}</td>
-            <td>{{user.username}}</td>
-            <td>{{user.clientname}}</td>
-            <td>{{user.server}}</td>
-            <td>{{user.paymentRecieved}}</td>
-            <td>{{user.paymentType}}</td>
-            <td>{{user.phone}}</td>
-            <td>{{user.date}}</td>
-            <td>{{user.buyAmount}}</td>
-            <td>{{user.sellAmount}}</td>
-        </tr>
-        {% endfor %}
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><strong>International Profit</strong></td>
-            <td>{{IntProfit}}</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><strong>Asia Profit</strong></td>
-            <td>{{AsiaProfit}}</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><strong>Total Profit</strong></td>
-            <td>{{FinalProfit}}</td>
-        </tr>
-        </tbody>
-    </table>
+<div class="table-wrapper" style="overflow-x: scroll; margin-top: 20px;">
+  <table class="tg" style="width: 100%;">
+    <thead>
+    <tr>
+      <th class="tg-1wig">Sr No.</th>
+      <th class="tg-0lax"><span style="font-weight:bold">Username</span></th>
+      <th class="tg-0lax"><span style="font-weight:bold">Client Name</span></th>
+      <th class="tg-0lax"><span style="font-weight:bold">Server</span></th>
+      <th class="tg-1wig">Payment Received</th>
+      <th class="tg-1wig">Payment Type</th>
+      <th class="tg-1wig">Phone No.</th>
+      <th class="tg-1wig">Expiry</th>
+      <th class="tg-1wig">Buy</th>
+      <th class="tg-1wig">Sell</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+    </tr>
+    <tr>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-1wig">International Profit</td>
+      <td class="tg-0lax">202289</td>
+    </tr>
+    <tr>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-1wig">Asia Profit</td>
+      <td class="tg-0lax">8987979</td>
+    </tr>
+    <tr>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"></td>
+      <td class="tg-0lax"><span style="font-weight:bold">Total Profit</span></td>
+      <td class="tg-0lax">87979</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
