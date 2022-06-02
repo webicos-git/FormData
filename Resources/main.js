@@ -9,11 +9,11 @@ $(function() {
 });
 
 // change format of date
-$(document).ready(function () {
-  $('input[id$=tbDate]').datepicker({
-    dateFormat: 'dd-mm-yy'			// Date Format "dd-mm-yy"
-  });
-});
+// $(document).ready(function () {
+//   $('input[id$=tbDate]').datepicker({
+//     dateFormat: 'dd-mm-yy'			// Date Format "dd-mm-yy"
+//   });
+// });
 
 // filter by datepicker
 $(function() {
