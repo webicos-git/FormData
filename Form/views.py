@@ -47,13 +47,6 @@ def search(request):
     return render(request, 'search.html', {'userdata': userdata})
 
 
-def getPdf(request):
-    params = {'userdata': UserData.objects.all()}
-    filename, finalProfit, asiaProfit, internationalProfit = save_pdf(params)
-    print(filename)
-    return render(request, 'pdf.html', {'path': filename, 'userdata': UserData.objects.all(), 'FinalProfit': finalProfit, 'AsiaProfit': asiaProfit, 'IntProfit': internationalProfit})
-
-
 def createPdf(request):
     return render(request, 'pdf.html')
 
@@ -68,22 +61,95 @@ def deleteUserData(request, id):
     pass
 
 
+def getPdf(request):
+    params = {'userdata': UserData.objects.all()}
+    filename, finalProfit, asiaProfit, internationalProfit = save_pdf(params)
+    print(filename)
+    return render(request, 'pdf.html', {'path': filename,
+                                        'userdata': UserData.objects.all(), 'FinalProfit': finalProfit,
+                                        'AsiaProfit': asiaProfit, 'IntProfit': internationalProfit})
+
+
 def downloadReport(request):
     if request.method == 'POST':
-        print(request.POST)
-        data=request.POST
-        customerName=data['customerName']
-        date=data['date']
-        if len(date)!=0:
+        data = request.POST
+        customerName = data['customerName']
+        date = data['date']
+        if len(date) != 0:
             date = datetime.strptime(date, "%Y-%m-%d").strftime('%d-%m-%Y')
-        
+        month = data['monthfilter']
+        userdata = UserData.objects.all().values()
+        dateORmonth = []
+        finalList = []
+        # Nothing selected
+        if len(customerName) == 0 and month == '0' and len(date) == 0:
+            for user in userdata:
+                finalList.append(user)
+            params = {'userdata': finalList}
+            filename, finalProfit, asiaProfit, internationalProfit = save_pdf(
+                params)
+            myDictionary = {'userdata': finalList, 'FinalProfit': finalProfit,
+                            'AsiaProfit': asiaProfit, 'IntProfit': internationalProfit}
+            return render(request, 'pdf.html', myDictionary)
 
-        month=data['monthfilter']
-        monthNew=date[3:5]
-        print("date=",date)
-        print("month new=",monthNew)
+        # Only username selected
+        if month == '0' and len(date) == 0 and len(customerName) != 0:
+            # print("inside only username")
+            for user in userdata:
+                if user['username'].strip() == customerName.strip():
+                    finalList.append(user)
+            params = {'userdata': finalList}
+            filename, finalProfit, asiaProfit, internationalProfit = save_pdf(
+                params)
+            myDictionary = {'userdata': finalList, 'FinalProfit': finalProfit,
+                            'AsiaProfit': asiaProfit, 'IntProfit': internationalProfit}
+            return render(request, 'pdf.html', myDictionary)
 
+        # date or month selected
+        if len(date) != 0 or month != '0' and len(customerName) == 0:
+            # Month Wise filter
+            if month != '0':
+                for user in userdata:
+                    userdate = user['date']
+                    userdatamonth = userdate[3:5]
+                    if month == userdatamonth:
+                        dateORmonth.append(user)
 
-        
+            elif len(date) and month == '0':
+                for user in userdata:
+                    userdataDate = user['date']
+                    if date == userdataDate:
+                        dateORmonth.append(user)
 
-    return render(request, 'search.html', {'userdata': UserData.objects.all()})
+            finalList = dateORmonth
+            if customerName == '':
+                params = {'userdata': finalList}
+                filename, finalProfit, asiaProfit, internationalProfit = save_pdf(
+                params)
+                myDictionary = {'userdata': finalList, 'FinalProfit': finalProfit,
+                            'AsiaProfit': asiaProfit, 'IntProfit': internationalProfit}
+                return render(request, 'pdf.html', myDictionary)
+
+            params = {'userdata': finalList}
+            filename, finalProfit, asiaProfit, internationalProfit = save_pdf(
+                params)
+            myDictionary = {'userdata': finalList, 'FinalProfit': finalProfit,
+                            'AsiaProfit': asiaProfit, 'IntProfit': internationalProfit}
+            return render(request, 'pdf.html', myDictionary)
+
+        # either username or date/month selected
+        if customerName != '' and len(date) != 0 or month != '0':
+            sampleList = []
+            for user in userdata:
+                if user['username'].strip() == customerName.strip():
+                    sampleList.append(user)
+
+            params = {'userdata': finalList}
+            filename, finalProfit, asiaProfit, internationalProfit = save_pdf(
+                params)
+            myDictionary = {'userdata': finalList, 'FinalProfit': finalProfit,
+                            'AsiaProfit': asiaProfit, 'IntProfit': internationalProfit}
+            return render(request, 'pdf.html', myDictionary)
+
+        # print(finalList)
+    return render(request, 'search.html', {'userdata': finalList})

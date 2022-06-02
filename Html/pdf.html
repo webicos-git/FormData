@@ -21,12 +21,22 @@
   </style>
 </head>
 <body class="container">
-<a href="{{path}}" class="btn btn-success mt-5" download>
+<button id="generatePDF" class="btn btn-success mt-5" onclick="generatePdf()">
   <!-- <img src="{% static 'pdf.png' %}" width="25px" alt="pdf download"> -->
   Download
-</a>
-<div class="table-wrapper" style="overflow-x: scroll; margin-top: 20px;">
-  <table class="tg" style="width: 100%;">
+</button>
+<!-- <div class="filter-search-section d-flex gap-3 mt-3 flex-md-row flex-column">
+      <div class="search-text">
+        <label for="filter" class="mb-1 text-secondary">Search by Name</label>
+        <div class="input-group">
+          <input type="text" placeholder="Search" name="customerName" class="form-control" id="filter">
+          <span class="input-group-text">
+            <img src="{% static 'search.png' %}" width="25px" alt="Search Icon">
+          </span>
+        </div>
+      </div> -->
+<div class="table-wrapper"  id="table-element" style="overflow-x: scroll; margin-top: 20px;margin-left: 20px;margin-right: 20px;">
+  <table  class="tg" style="width: 100%;">
     <thead>
     <tr>
       <th class="tg-1wig">Sr No.</th>
@@ -42,18 +52,20 @@
     </tr>
     </thead>
     <tbody>
+      {% for user in userdata %}
     <tr>
-      <td class="tg-0lax"></td>
-      <td class="tg-0lax"></td>
-      <td class="tg-0lax"></td>
-      <td class="tg-0lax"></td>
-      <td class="tg-0lax"></td>
-      <td class="tg-0lax"></td>
-      <td class="tg-0lax"></td>
-      <td class="tg-0lax"></td>
-      <td class="tg-0lax"></td>
-      <td class="tg-0lax"></td>
+      <td class="tg-0lax">{{forloop.counter}}</td>
+      <td class="tg-0lax">{{user.username}}</td>
+      <td class="tg-0lax">{{user.clientname}}</td>
+      <td class="tg-0lax">{{user.server}}</td>
+      <td class="tg-0lax">{{user.paymentRecieved}}</td>
+      <td class="tg-0lax">{{user.paymentType}}</td>
+      <td class="tg-0lax">{{user.phone}}</td>
+      <td class="tg-0lax" style="width: 80px;" >{{user.date}}</td>
+      <td class="tg-0lax">{{user.buyAmount}}</td>
+      <td class="tg-0lax">{{user.sellAmount}}</td>
     </tr>
+    {% endfor %}
     <tr>
       <td class="tg-0lax"></td>
       <td class="tg-0lax"></td>
@@ -63,8 +75,8 @@
       <td class="tg-0lax"></td>
       <td class="tg-0lax"></td>
       <td class="tg-0lax"></td>
-      <td class="tg-1wig">International Profit</td>
-      <td class="tg-0lax">202289</td>
+      <td class="tg-1wig">Inter Profit</td>
+      <td class="tg-0lax">{{IntProfit}}</td>
     </tr>
     <tr>
       <td class="tg-0lax"></td>
@@ -76,7 +88,7 @@
       <td class="tg-0lax"></td>
       <td class="tg-0lax"></td>
       <td class="tg-1wig">Asia Profit</td>
-      <td class="tg-0lax">8987979</td>
+      <td class="tg-0lax">{{AsiaProfit}}</td>
     </tr>
     <tr>
       <td class="tg-0lax"></td>
@@ -88,14 +100,22 @@
       <td class="tg-0lax"></td>
       <td class="tg-0lax"></td>
       <td class="tg-0lax"><span style="font-weight:bold">Total Profit</span></td>
-      <td class="tg-0lax">87979</td>
+      <td class="tg-0lax">{{FinalProfit}}</td>
     </tr>
     </tbody>
   </table>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-<script src="{% static 'main.js' %}"></script> -->
+<script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+<script type="text/javascript">
+ function generatePdf() {
+  const element = document.getElementById('table-element');
+  html2pdf()
+  .from(element)
+  .save();
+}
+</script>
+
 </body>
 </html>
