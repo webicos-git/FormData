@@ -29,6 +29,7 @@
       <div class="search-month">
         <label for="filter" class="mb-1 text-secondary">Search by month</label>
         <select  name="monthfilter" id="month-filter"class="form-select">
+          <option value="0" selectd>Select Month</option>
           <option value="01">January</option>
           <option value="02">February</option>
           <option value="03">March</option>
@@ -80,7 +81,7 @@
         <td>{{user.server}}</td>
         <td>{{user.paymentRecieved}}</td>
         <td>{{user.paymentType}}</td>
-        <td>{{user.phone}}</td>
+        <td><a href="https://wa.me/974{{user.phone}}" target="_blank">{{user.phone}}</a></td>
         <td>{{user.date}}</td>
         <td><a href="{% url 'deleteUserData' user.id %}"><button type="button" class="btn btn-danger">Delete</button></a></td>
 
