@@ -11,12 +11,12 @@
 </head>
 <body>
   <div class="main-wrapper">
-  {% for msg in message %}
+  {% if message %}
   <script>
     alert('{{message}}');
 
   </script>
-  {% endfor %}
+  {% endif %}
     <div class="form-wrapper shadow-lg">
       <h4 class="mb-3">Enter Details:</h4>
       <form method="POST"> 

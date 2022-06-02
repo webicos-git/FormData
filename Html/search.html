@@ -13,24 +13,46 @@
   <a class="btn btn-secondary mt-4" href="/"> < Go Back</a>
   <h1 class="display-4 mt-2">Search records</h1>
 
-  <div class="filter-search-section d-flex gap-3 mt-3 flex-md-row flex-column">
-    <div class="search-text">
-      <label for="filter" class="mb-1 text-secondary">Search by Name</label>
-      <div class="input-group">
-        <input type="text" placeholder="Search" class="form-control" id="filter">
-        <span class="input-group-text">
-          <img src="{% static 'search.png' %}" width="25px" alt="Search Icon">
-        </span>
+  <form>
+    <div class="filter-search-section d-flex gap-3 mt-3 flex-md-row flex-column">
+      <div class="search-text">
+        <label for="filter" class="mb-1 text-secondary">Search by Name</label>
+        <div class="input-group">
+          <input type="text" placeholder="Search" class="form-control" id="filter">
+          <span class="input-group-text">
+            <img src="{% static 'search.png' %}" width="25px" alt="Search Icon">
+          </span>
+        </div>
+      </div>
+
+      <div class="search-month">
+        <label for="filter" class="mb-1 text-secondary">Search by month</label>
+        <select  name="month-filter" id="month-filter"class="form-select">
+          <option value="01">January</option>
+          <option value="02">February</option>
+          <option value="03">March</option>
+          <option value="04">April</option>
+          <option value="05">May</option>
+          <option value="06">June</option>
+          <option value="07">July</option>
+          <option value="08">August</option>
+          <option value="09">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+      </div>
+
+      <div class="date-picker">
+        <label for="tbdate" class="mb-1 text-secondary">Search by date</label>
+        <div class="input-group">
+          <input type="date" class="form-control" placeholder="Profit" id="tbdate">
+        </div>
       </div>
     </div>
 
-    <div class="date-picker">
-      <label for="tbdate" class="mb-1 text-secondary">Search by date</label>
-      <div class="input-group">
-        <input type="date" class="form-control" placeholder="Profit" id="tbdate">
-      </div>
-    </div>
-  </div>
+    <input type="submit" value="Submit" class="btn btn-success mt-3">
+  </form>
 
   <div class="table-wrapper">
     <table class="table table-striped mt-5" id="example-table">

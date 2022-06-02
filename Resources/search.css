@@ -1,9 +1,13 @@
 .search-text {
-  width: 70%;
+  width: 100%;
+}
+
+.search-month {
+  width: 100%;
 }
 
 .date-picker {
-  width: 30%;
+  width: 100%;
 }
 
 th, td {
