@@ -45,20 +45,20 @@
             </select>
 
             <p class="text-secondary mb-1 mt-3">Select Transaction</p>
-            <select name="buyorsell" class="form-select">
-              <option value="buy" selected>BUY</option>
+            <select name="buyorsell" class="form-select" id="transactionType">
               <option value="sell">SELL</option>
+              <option value="buy">BUY</option>
             </select>
           </div>
 
           <div class="payment">
             <p class="text-secondary mb-1">Select Payment Mode</p>
             <div class="form-check form-switch">
-              <label class="form-check-label" for="flexSwitchCheckChecked">Payment recieved</label>
-              <input class="form-check-input" type="checkbox" name="paymentRecieved" role="switch" id="flexSwitchCheckChecked" required>
+              <label class="form-check-label" for="paymentRecievedToggle">Payment recieved</label>
+              <input class="form-check-input" type="checkbox" name="paymentRecieved" role="switch" id="paymentRecievedToggle" required>
             </div>
 
-            <select name="paymentmode" class="form-select mt-1">
+            <select name="paymentmode" class="form-select mt-1" id="paymentMode">
               <option value="Online Payment" selected>Online Payment</option>
               <option value="Offline Payment">Offline Payment</option>
             </select>
@@ -73,9 +73,9 @@
 
         <div class="d-flex gap-3 flex-md-row flex-column mt-md-3">
           <div class="profit">
-            <label for="profit" class="mb-2 text-secondary">Enter Buy amount</label>
+            <label for="buyAmount" class="mb-2 text-secondary">Enter Buy amount</label>
             <div class="input-group mb-md-3">
-              <input type="number" class="form-control" name="buyAmount" placeholder="Buy amount" id="profit">
+              <input type="number" class="form-control" name="buyAmount" placeholder="Buy amount" id="buyAmount">
             </div>
           </div>
 
