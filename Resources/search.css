@@ -26,6 +26,10 @@ table {
   display: none;
 }
 
+.red-row {
+  background-color: #ff000033;
+}
+
 @media screen and (max-width: 768px) {
   .search-text {
     width: 100%;
