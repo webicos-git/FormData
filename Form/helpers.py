@@ -19,19 +19,24 @@ def save_pdf(params):
     purchasePrice = 0
     internationalProfit = 0
     userdata = params['userdata']
-    print(userdata)
+    totalBuy=0
+    totalSell=0
+    # print(userdata)
     for field in userdata:
-        if field['transaction'] == 'buy':
+        print(field)
+        if field['transaction'] == 'BUY':
             purchasePrice += float(field['buyAmount'])
+            totalBuy+=float(field['buyAmount'])
             continue
 
-        if field['transaction'] == 'sell':
+        if field['transaction'] == 'SELL':
             if field['server'] == 'Asia Server':
                 asiaProfit += float(field['sellAmount'])*0.4
 
             elif field['server'] == 'International Server':
                 internationalProfit += float(field['sellAmount'])*0.3
             sellPrice += float(field['sellAmount'])
+            totalSell=float(field['sellAmount'])
 
     finalProfit = sellPrice-purchasePrice
     print("Final Profit:", finalProfit)
@@ -56,4 +61,4 @@ def save_pdf(params):
     # if pdf.err:
     #     return '', False
 
-    return f'/media/{filename}.pdf', finalProfit, asiaProfit, internationalProfit
+    return f'/media/{filename}.pdf', finalProfit, asiaProfit, internationalProfit,totalSell,totalBuy

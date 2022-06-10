@@ -7,13 +7,25 @@
   <title>Form Project</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
 <body>
   <div class="main-wrapper">
+    <script>
+        $("#radio_1").prop("checked", true);
+        // $("#radio_1").attr("checked") ? alert("Checked") : alert("Unchecked");
+
+        if ("{{userdata.paymentRecieved}}"=="Payment Recieved"){
+            
+            $("#radio_1").prop("checked", true);
+            console.log("inside if")
+    
+        }
+      </script>
   {% if message %}
   <script>
     alert('{{message}}');
-
   </script>
   {% endif %}
     <div class="form-wrapper shadow-lg">
@@ -26,11 +38,11 @@
         {% csrf_token %}  
         <div class="d-flex gap-3 flex-md-row flex-column">
           <div class="input-group mb-md-3">
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username" name="username" required>
+            <input type="text" class="form-control" placeholder="Username" aria-label="Username" name="username" value="{{userdata.username}}" required>
           </div>
 
           <div class="input-group mb-md-3">
-            <input type="text" class="form-control" placeholder="Client Name" aria-label="Client Name" name="clientname" required>
+            <input type="text" class="form-control" placeholder="Client Name" aria-label="Client Name" name="clientname" value="{{userdata.clientname}}" required>
           </div>
 
           <div class="input-group mb-md-3">
@@ -42,6 +54,7 @@
               placeholder="Phone Number"
               aria-label="Client Name"
               name="phoneNumber"
+              value="{{userdata.phone}}"
               required />
 <!--            <input-->
 <!--              type="number"-->
@@ -60,12 +73,14 @@
           <div class="server">
             <p class="text-secondary mb-1">Select Server</p>
             <select  name="server" id="server"class="form-select">
-              <option value="International Server" selected>International Server</option>
+                <option value="{{userdata.server}}" selected>{{userdata.server}}</option>
+              <option value="International Server" >International Server</option>
               <option value="Asia Server">Asia Server</option>
             </select>
 
             <p class="text-secondary mb-1 mt-3">Select Transaction</p>
             <select name="buyorsell" class="form-select" id="transactionType">
+                <option value="{{userdata.transaction}}" selected>{{userdata.transaction}}</option>
               <option value="SELL">SELL</option>
               <option value="BUY">BUY</option>
             </select>
@@ -75,7 +90,7 @@
             <p class="text-secondary mb-1">Select Payment Mode</p>
             <div class="form-check form-switch">
               <label class="form-check-label" for="paymentRecievedToggle">Payment recieved</label>
-              <input class="form-check-input" type="checkbox" name="paymentRecieved" role="switch" id="paymentRecievedToggle">
+              <input class="form-check-input" id="radio_1" type="checkbox" name="paymentRecieved" role="switch" id="paymentRecievedToggle">
             </div>
 
             <select name="paymentmode" class="form-select mt-1" id="paymentMode">
@@ -85,7 +100,8 @@
 
             <div class="sell-amount mt-2">
               <div class="input-group mb-md-3">
-                <input type="number" class="form-control" name="sellAmount" placeholder="Enter Sell amount" id="sell-amount">
+
+                <input type="number" class="form-control" name="sellAmount" placeholder="Enter Sell amount" id="sell-amount" value="{{userdate.sellAmount}}">
               </div>
             </div>
           </div>
@@ -95,14 +111,14 @@
           <div class="profit">
             <label for="buyAmount" class="mb-2 text-secondary">Enter Buy amount</label>
             <div class="input-group mb-md-3">
-              <input type="number" class="form-control" name="buyAmount" placeholder="Buy amount" id="buyAmount">
+              <input type="number" class="form-control" name="buyAmount" placeholder="Buy amount" id="buyAmount" value="{{userdata.buyAmount}}">
             </div>
           </div>
 
           <div class="expiry-date">
             <label for="tbdate" class="mb-2 text-secondary">Expiry Date</label>
             <div class="input-group mb-3">
-              <input type="date" class="form-control" name="date" placeholder="Profit" id="tbdate" required value="{{userdata.date}}">
+              <input type="date" class="form-control" name="date" placeholder="Profit" id="tbdate" required>
             </div>
           </div>
         </div>
@@ -118,9 +134,8 @@
     </a>
 
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-  <script src="{% static 'main.js' %}"></script>
+  <!-- <script src="{% static 'main.js' %}"></script> -->
 </body>
 </html>

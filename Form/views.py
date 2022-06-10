@@ -86,10 +86,12 @@ def downloadReport(request):
             for user in userdata:
                 finalList.append(user)
             params = {'userdata': finalList}
-            filename, finalProfit, asiaProfit, internationalProfit = save_pdf(
+            filename, finalProfit, asiaProfit, internationalProfit, totalSell, totalBuy = save_pdf(
                 params)
             myDictionary = {'userdata': finalList, 'FinalProfit': finalProfit,
-                            'AsiaProfit': asiaProfit, 'IntProfit': internationalProfit}
+                            'AsiaProfit': asiaProfit, 'IntProfit': internationalProfit,
+                            'TotalBuy': totalBuy, 'TotalSell': totalSell
+                            }
             return render(request, 'pdf.html', myDictionary)
 
         # Only username selected
@@ -99,10 +101,12 @@ def downloadReport(request):
                 if user['username'].strip() == customerName.strip():
                     finalList.append(user)
             params = {'userdata': finalList}
-            filename, finalProfit, asiaProfit, internationalProfit = save_pdf(
+            filename, finalProfit, asiaProfit, internationalProfit, totalSell, totalBuy = save_pdf(
                 params)
             myDictionary = {'userdata': finalList, 'FinalProfit': finalProfit,
-                            'AsiaProfit': asiaProfit, 'IntProfit': internationalProfit}
+                            'AsiaProfit': asiaProfit, 'IntProfit': internationalProfit,
+                            'TotalBuy': totalBuy, 'TotalSell': totalSell
+                            }
             return render(request, 'pdf.html', myDictionary)
 
         # date or month selected
@@ -124,17 +128,21 @@ def downloadReport(request):
             finalList = dateORmonth
             if customerName == '':
                 params = {'userdata': finalList}
-                filename, finalProfit, asiaProfit, internationalProfit = save_pdf(
-                params)
+                filename, finalProfit, asiaProfit, internationalProfit, totalSell, totalBuy = save_pdf(
+                    params)
                 myDictionary = {'userdata': finalList, 'FinalProfit': finalProfit,
-                            'AsiaProfit': asiaProfit, 'IntProfit': internationalProfit}
+                                'AsiaProfit': asiaProfit, 'IntProfit': internationalProfit,
+                                'TotalBuy': totalBuy, 'TotalSell': totalSell
+                                }
                 return render(request, 'pdf.html', myDictionary)
 
             params = {'userdata': finalList}
-            filename, finalProfit, asiaProfit, internationalProfit = save_pdf(
+            filename, finalProfit, asiaProfit, internationalProfit, totalSell, totalBuy = save_pdf(
                 params)
             myDictionary = {'userdata': finalList, 'FinalProfit': finalProfit,
-                            'AsiaProfit': asiaProfit, 'IntProfit': internationalProfit}
+                            'AsiaProfit': asiaProfit, 'IntProfit': internationalProfit,
+                            'TotalBuy': totalBuy, 'TotalSell': totalSell
+                            }
             return render(request, 'pdf.html', myDictionary)
 
         # either username or date/month selected
@@ -145,11 +153,60 @@ def downloadReport(request):
                     sampleList.append(user)
 
             params = {'userdata': finalList}
-            filename, finalProfit, asiaProfit, internationalProfit = save_pdf(
+            filename, finalProfit, asiaProfit, internationalProfit, totalSell, totalBuy = save_pdf(
                 params)
             myDictionary = {'userdata': finalList, 'FinalProfit': finalProfit,
-                            'AsiaProfit': asiaProfit, 'IntProfit': internationalProfit}
+                            'AsiaProfit': asiaProfit, 'IntProfit': internationalProfit,
+                            'TotalBuy': totalBuy, 'TotalSell': totalSell
+                            }
             return render(request, 'pdf.html', myDictionary)
 
         # print(finalList)
     return render(request, 'search.html', {'userdata': finalList})
+
+def update(request,id):
+    userdata=UserData.objects.get(id=id)
+    print(userdata)
+    if request.method == 'POST':
+        data = request.POST
+        print(data)
+        server = data['server']
+        paymentRecieved = "Not Recieved"
+        paymentType = ""
+        if "paymentRecieved" in data:
+            paymentRecieved = "Payment Recieved"
+            paymentType = data['paymentmode']
+
+        date = data['date']
+        username = data['username']
+        clientname = data['clientname']
+        date = datetime.strptime(date, "%Y-%m-%d").strftime('%d-%m-%Y')
+        transaction = data['buyorsell']
+        buy = 0
+        sell = 0
+        if "buyAmount" in data:
+            print("inside first if")
+            buy = data['buyAmount']
+            buy = float(buy)
+        if "sellAmount" in data and data['sellAmount'] != '':
+            print("inside second if")
+            sell = data['sellAmount']
+            sell = float(sell)
+        phone = data['phoneNumber']
+        u = UserData.objects.get(id=id)
+        u.username=username
+        u.clientname=clientname
+        u.server=server
+        u.paymentRecieved=paymentRecieved
+        u.paymentType=paymentType
+        u.transaction=transaction
+        u.sellAmount=sell
+        u.buyAmount=buy
+        u.phone=phone
+        u.date=date
+        u.save()
+        userdata= UserData.objects.all()
+        return render(request,'search.html',{'userdata':userdata})
+
+
+    return render(request, 'update.html', {'userdata': userdata})

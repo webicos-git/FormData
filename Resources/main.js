@@ -4,12 +4,12 @@ $(document).ready(function(){
     var selectedTransaction = $(this).children("option:selected").val();
     // alert(selectedTransaction);
 
-    if (selectedTransaction == 'sell') {
+    if (selectedTransaction == 'SELL') {
       $("#buyAmount").prop('disabled', true);
       $("#paymentRecievedToggle").prop('disabled', false);
       $("#paymentMode").prop('disabled', false);
       $("#sell-amount").prop('disabled', false);
-    } else if (selectedTransaction == 'buy') {
+    } else if (selectedTransaction == 'BUY') {
       $("#buyAmount").prop('disabled', false);
       $("#paymentRecievedToggle").prop('disabled', true);
       $("#paymentMode").prop('disabled', true);

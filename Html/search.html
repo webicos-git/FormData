@@ -92,6 +92,9 @@
           <a href="{% url 'deleteUserData' user.id %}">
             <button type="button" class="btn btn-danger">Delete</button>
           </a>
+          <a href="{% url 'updateUserData' user.id %}">
+            <button type="button" class="btn btn-success">Edit</button>
+          </a>
         </td>
 
         <!-- <td>{{user.buyAmount}}</td>
