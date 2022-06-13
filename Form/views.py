@@ -184,7 +184,7 @@ def update(request,id):
         transaction = data['buyorsell']
         buy = 0
         sell = 0
-        if "buyAmount" in data:
+        if "buyAmount" in data and data['buyAmount'] != '':
             print("inside first if")
             buy = data['buyAmount']
             buy = float(buy)

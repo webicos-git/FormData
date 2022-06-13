@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'FormData.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'FormData',
+        'NAME': 'formdata',
         'USER': 'admin',
         'PASSWORD': '12345678',
-        'HOST': 'vactionplaces1.cussmttaeeue.ap-south-1.rds.amazonaws.com',
+        'HOST': 'qatarlive.cussmttaeeue.ap-south-1.rds.amazonaws.com',
         'PORT': '3306',
     }
 }
