@@ -12,17 +12,6 @@
 </head>
 <body>
   <div class="main-wrapper">
-    <script>
-        $("#radio_1").prop("checked", true);
-        // $("#radio_1").attr("checked") ? alert("Checked") : alert("Unchecked");
-
-        if ("{{userdata.paymentRecieved}}"=="Payment Recieved"){
-            
-            $("#radio_1").prop("checked", true);
-            console.log("inside if")
-    
-        }
-      </script>
   {% if message %}
   <script>
     alert('{{message}}');
@@ -94,7 +83,8 @@
             </div>
 
             <select name="paymentmode" class="form-select mt-1" id="paymentMode">
-              <option value="Online Payment" selected>Online Payment</option>
+              <option value="Online Payment" selected>{{userdata.paymentType}}</option>
+              <option value="Offline Payment">Offline Payment</option>
               <option value="Offline Payment">Offline Payment</option>
             </select>
 
@@ -122,7 +112,7 @@
             </div>
           </div>
         </div>
-        <input type="submit" class="btn btn-success mx-auto d-block submit-btn" />
+        <input type="submit" value="Update" class="btn btn-success mx-auto d-block submit-btn" />
       </form>
     </div>
 
@@ -137,5 +127,20 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   <!-- <script src="{% static 'main.js' %}"></script> -->
+  <script>
+    $("#radio_1").prop("checked", true);
+    // $("#radio_1").attr("checked") ? alert("Checked") : alert("Unchecked");
+
+    if ("{{userdata.paymentRecieved}}"=="Payment Recieved"){
+
+      $("#radio_1").attr("checked", true);
+      console.log("inside if")
+
+    }
+
+    let exp_date = "{{userdata.date}}";
+    let format_date = exp_date.split("-").reverse().join("-");
+    document.getElementById("tbdate").setAttribute("value", format_date);
+  </script>
 </body>
 </html>
