@@ -18,11 +18,9 @@
   </script>
   {% endif %}
     <div class="form-wrapper shadow-lg">
-      <h1 class="display-2 main-title">Qatar <span class="text-black">Live</span></h1>
 
-      <hr class="index-hr">
 
-      <h4 class="mb-3">Enter Details:</h4>
+      <h4 class="mb-3">Update Details:</h4>
       <form method="POST"> 
         {% csrf_token %}  
         <div class="d-flex gap-3 flex-md-row flex-column">
@@ -91,7 +89,7 @@
             <div class="sell-amount mt-2">
               <div class="input-group mb-md-3">
 
-                <input type="number" class="form-control" name="sellAmount" placeholder="Enter Sell amount" id="sell-amount" value="{{userdate.sellAmount}}">
+                <input type="number" class="form-control" name="sellAmount" placeholder="Enter Sell amount" id="sell-amount" value="{{userdata.sellAmount}}">
               </div>
             </div>
           </div>
