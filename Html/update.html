@@ -88,8 +88,18 @@
 
             <div class="sell-amount mt-2">
               <div class="input-group mb-md-3">
-
                 <input type="number" class="form-control" name="sellAmount" placeholder="Enter Sell amount" id="sell-amount" value="{{userdata.sellAmount}}">
+              </div>
+
+              <div class="input-group mt-2">
+                <input
+                  type="number"
+                  pattern="/^-?\d+\.?\d*$/"
+                  onKeyPress="if(this.value.length==2) return false;"
+                  class="form-control"
+                  placeholder="Enter Profit %"
+                  id="profit-input">
+                <span class="input-group-text">%</span>
               </div>
             </div>
           </div>
