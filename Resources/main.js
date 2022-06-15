@@ -1,7 +1,7 @@
 $(document).ready(function(){
   $("#buyAmount").prop('disabled', true);
   $("select#transactionType").change(function(){
-    var selectedTransaction = $(this).children("option:selected").val();
+    var selectedTransaction = $(this).children("option:selected").val(); 
     // alert(selectedTransaction);
 
     if (selectedTransaction == 'SELL') {
