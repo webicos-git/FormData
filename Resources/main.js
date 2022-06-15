@@ -9,11 +9,13 @@ $(document).ready(function(){
       $("#paymentRecievedToggle").prop('disabled', false);
       $("#paymentMode").prop('disabled', false);
       $("#sell-amount").prop('disabled', false);
+      $("#profit-input").prop('disabled', false);
     } else if (selectedTransaction == 'BUY') {
       $("#buyAmount").prop('disabled', false);
       $("#paymentRecievedToggle").prop('disabled', true);
       $("#paymentMode").prop('disabled', true);
       $("#sell-amount").prop('disabled', true);
+      $("#profit-input").prop('disabled', true);
     }
   });
 });
