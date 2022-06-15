@@ -31,8 +31,15 @@ def index(request):
             sell = data['sellAmount']
             sell = float(sell)
         phone = data['phoneNumber']
+        profit = 0
+        interProfit = 0
+        if  data['buyorsell'] == 'SELL':
+            profit=data['profit']
+
         userdata = UserData(username=username, clientname=clientname, date=date,
-                            paymentType=paymentType, paymentRecieved=paymentRecieved, server=server, transaction=transaction, buyAmount=buy, sellAmount=sell, phone=phone)
+                            paymentType=paymentType, paymentRecieved=paymentRecieved,
+                            server=server, transaction=transaction, buyAmount=buy,
+                            sellAmount=sell, phone=phone,profit=profit)
 
         userdata.save()
         print("model saved")
@@ -164,8 +171,9 @@ def downloadReport(request):
         # print(finalList)
     return render(request, 'search.html', {'userdata': finalList})
 
-def update(request,id):
-    userdata=UserData.objects.get(id=id)
+
+def update(request, id):
+    userdata = UserData.objects.get(id=id)
     print(userdata)
     if request.method == 'POST':
         data = request.POST
@@ -193,20 +201,24 @@ def update(request,id):
             sell = data['sellAmount']
             sell = float(sell)
         phone = data['phoneNumber']
+        profit = 0
+        interProfit = 0
+        if  data['buyorsell'] == 'SELL':
+            profit=data['profit']
         u = UserData.objects.get(id=id)
-        u.username=username
-        u.clientname=clientname
-        u.server=server
-        u.paymentRecieved=paymentRecieved
-        u.paymentType=paymentType
-        u.transaction=transaction
-        u.sellAmount=sell
-        u.buyAmount=buy
-        u.phone=phone
-        u.date=date
+        u.username = username
+        u.clientname = clientname
+        u.server = server
+        u.paymentRecieved = paymentRecieved
+        u.paymentType = paymentType
+        u.transaction = transaction
+        u.sellAmount = sell
+        u.buyAmount = buy
+        u.phone = phone
+        u.date = date
+        u.profit=profit
         u.save()
-        userdata= UserData.objects.all()
-        return render(request,'search.html',{'userdata':userdata})
-
+        userdata = UserData.objects.all()
+        return render(request, 'search.html', {'userdata': userdata})
 
     return render(request, 'update.html', {'userdata': userdata})

@@ -82,7 +82,7 @@
 
             <select name="paymentmode" class="form-select mt-1" id="paymentMode">
               <option value="Online Payment" selected>{{userdata.paymentType}}</option>
-              <option value="Offline Payment">Offline Payment</option>
+              <option value="Offline Payment">Online Payment</option>
               <option value="Offline Payment">Offline Payment</option>
             </select>
 
@@ -98,7 +98,8 @@
                   onKeyPress="if(this.value.length==2) return false;"
                   class="form-control"
                   placeholder="Enter Profit %"
-                  id="profit-input">
+                  id="profit-input"
+                  value="{{userdata.profit}}">
                 <span class="input-group-text">%</span>
               </div>
             </div>
