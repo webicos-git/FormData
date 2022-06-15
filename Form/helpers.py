@@ -32,11 +32,13 @@ def save_pdf(params):
 
         if field['transaction'] == 'SELL':
             if field['server'] == 'Asia Server':
-                asiaProfit += float(field['sellAmount'])*0.4
+                asiaProfit += float(field['sellAmount']) * \
+                    int(field['profit'])/100
                 sellPrice += float(field['sellAmount'])
 
             elif field['server'] == 'International Server':
-                internationalProfit += float(field['sellAmount'])*0.3
+                internationalProfit += float(field['sellAmount']) * \
+                    int(field['profit'])/100
                 sellPrice += float(field['sellAmount'])
             totalSell += float(field['sellAmount'])
 

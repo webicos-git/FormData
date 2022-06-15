@@ -14,6 +14,8 @@ class UserData(models.Model):
     phone=models.CharField(max_length =100,default='')
     # profit=models.CharField(max_length =100)
     date=models.CharField(max_length =100)
+    profit=models.IntegerField(default=0)
+    # interProfit=models.IntegerField(default=0)
 
     def __str__(self):
         return self.username
