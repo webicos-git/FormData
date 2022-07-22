@@ -5,6 +5,7 @@ from .models import UserData
 from datetime import datetime
 from .helpers import save_pdf
 from django.contrib.auth import authenticate, logout
+from django.contrib.auth import logout as logout_auth
 from django.contrib.auth import login as login_auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -255,6 +256,6 @@ def login(request):
     return render(request, 'login.html', context)
 
 
-def logoutUser(request):
-    logout(request)
+def logout(request):
+    logout_auth(request)
     return redirect('login')
