@@ -1,6 +1,6 @@
 .idea/
 /__pycache__/
 *.pyc
-/Formdata/__pycache__
-/Formdata/settings.py
-/Form/__pycache__
+/FormData/__pycache__/*
+/FormData/settings.py
+/Form/__pycache__/*
