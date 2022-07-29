@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'formdata',
         'USER': 'admin',
-        'PASSWORD': '12345678',
+        'PASSWORD': 'Hasan#400702',
         'HOST': 'qatarlive.cussmttaeeue.ap-south-1.rds.amazonaws.com',
         'PORT': '3306',
     }
