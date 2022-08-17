@@ -43,3 +43,7 @@ table {
     width: 100%;
   }
 }
+
+.expired {
+  background: rgba(255, 0, 0, 0.46);
+}

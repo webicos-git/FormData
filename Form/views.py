@@ -58,7 +58,23 @@ def index(request):
 def search(request):
     userdata = UserData.objects.all().values()
     # print(userdata)
-    return render(request, 'search.html', {'userdata': userdata})
+    todaysDate = datetime.today().strftime('%d-%m-%Y')
+    todaysDate = datetime.strptime(todaysDate, '%d-%m-%Y')
+    userData2 = []
+    for data in userdata:
+        date = data['date']
+        print(date)
+
+        date = datetime.strptime(date, '%d-%m-%Y')
+        isExpired = False
+        if date < todaysDate:
+            isExpired = True
+        else:
+            isExpired = False
+        data['isExpired']=isExpired
+        userData2.append(data)
+
+    return render(request, 'search.html', {'userdata': userData2})
 
 
 @login_required(login_url='login')
@@ -231,7 +247,7 @@ def update(request, id):
         u.profit = profit
         u.save()
         userdata = UserData.objects.all()
-        return render(request, 'search.html', {'userdata': userdata})
+        return redirect('/search')
 
     return render(request, 'update.html', {'userdata': userdata})
 

@@ -76,7 +76,7 @@
       </thead>
       <tbody>
       {% for user in userdata %}
-      <tr>
+      <tr id="{{forloop.counter}}">
         <td>{{forloop.counter}}</td>
         <td>{{user.username}}</td>
         <td>{{user.clientname}}</td>
@@ -96,9 +96,21 @@
             <button type="button" class="btn btn-primary">Edit</button>
           </a>
         </td>
+        <script>
+          checkDate(`{{user.isExpired}}`, `{{forloop.counter}}`)
+          console.log('chck fn usr date: ' + `{{user.date}}`);
 
-        <!-- <td>{{user.buyAmount}}</td>
-        <td>{{user.sellAmount}}</td> -->
+          function checkDate(isExpired, id) {
+
+              console.log(isExpired, 'hehe');
+
+            if(isExpired == 'True') {
+              console.log('usrDate < curDate: ' + true);
+              document.getElementById(id).classList.add('expired');
+            }
+          }
+
+        </script>
     </tr>
 
       {% endfor %}
